@@ -1,8 +1,13 @@
 const express = require('express')
 var bodyParser = require('body-parser')
+
+// Express Validator
+// const expressValidator = require('express-validator')
+// DotENV
 require('dotenv').config()
 // Routes
 var apiRoutes = require('./routes/api.js');
+
 
 const app = express()
 const port = process.env.NODE_PORT;
@@ -15,6 +20,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 // parse application/json
 app.use(bodyParser.json())
+
+// Using Express Validator
+// app.use(expressValidator())
 
 /**
  * Synchronize Sequelize Models

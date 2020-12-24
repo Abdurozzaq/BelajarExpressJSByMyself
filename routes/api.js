@@ -6,12 +6,18 @@ const Sequelize = require('sequelize');
  * Importing Controllers
  */
 const home = require('../app/controllers/HomeController.js');
+const signInController = require('../app/controllers/api/auth/SignInController.js');
 
 
 /**
  * Importing Middlewares 
  */
 const logMiddleware = require('../app/middlewares/logMiddleware.js');
+
+/**
+ * Importing Request Validator
+ */
+const signInValidator = require('../app/requestValidator/api/auth/SignInRequestValidator.js');
 
 /**
  * Define route with separate controller
@@ -47,6 +53,11 @@ const sequelize = new Sequelize('database', 'username', 'password', {
   host: 'localhost',
   dialect: 'mysql'
 });
+
+/**
+ * Sign In Route
+ */
+router.post('/signin', signInValidator.validateUser, signInController.signIn);
 
 
 module.exports = router;
