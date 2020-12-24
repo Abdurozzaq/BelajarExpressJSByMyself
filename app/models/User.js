@@ -39,14 +39,16 @@ module.exports = (sequelize, DataTypes) => {
 			defaultValue: false,
 			allowNull: false
 		},
-		role: { 
-			type: DataTypes.STRING,
-			defaultValue: false,
-			allowNull: false
-		}
 	}, {
 		sequelize,
 		modelName: 'User',
 	});
+
+	
+
+	User.associate = function(models) {
+    User.belongsToMany(models.Role, { through: 'RoleUser' });
+  };
+
   return User;
 };

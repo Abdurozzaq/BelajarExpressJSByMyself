@@ -33,11 +33,6 @@ module.exports = {
         defaultValue: false,
         allowNull: false
       },
-      role: { 
-        type: Sequelize.STRING,
-        defaultValue: false,
-        allowNull: false
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
