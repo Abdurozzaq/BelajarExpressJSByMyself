@@ -1,5 +1,3 @@
-const bcrypt = require('bcrypt');
-const saltRounds = 10;
 'use strict';
 
 module.exports = {
@@ -13,31 +11,22 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    return queryInterface.bulkInsert('Users', [
+    return queryInterface.bulkInsert('RoleUser', [
       {
-        firstName: 'Admin',
-        lastName: 'Doe',
-        email: 'Admin@example.com',
-        password: bcrypt.hashSync('password', saltRounds),
-        email_verified_at: true,
+        RoleId: 1,
+        UserId: 1,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        firstName: 'User',
-        lastName: 'One',
-        email: 'UserOne@example.com',
-        password: bcrypt.hashSync('password', saltRounds),
-        email_verified_at: false,
+        RoleId: 2,
+        UserId: 2,
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        firstName: 'User',
-        lastName: 'Two',
-        email: 'UserTwo@example.com',
-        password: bcrypt.hashSync('password', saltRounds),
-        email_verified_at: true,
+        RoleId: 2,
+        UserId: 3,
         createdAt: new Date(),
         updatedAt: new Date()
       },

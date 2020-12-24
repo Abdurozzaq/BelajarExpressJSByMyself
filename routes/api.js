@@ -7,6 +7,7 @@ const Sequelize = require('sequelize');
  */
 const home = require('../app/controllers/HomeController.js');
 const signInController = require('../app/controllers/api/auth/SignInController.js');
+const signUpController = require('../app/controllers/api/auth/SignUpController.js');
 
 
 /**
@@ -18,6 +19,7 @@ const logMiddleware = require('../app/middlewares/logMiddleware.js');
  * Importing Request Validator
  */
 const signInValidator = require('../app/requestValidator/api/auth/SignInRequestValidator.js');
+const signUpValidator = require('../app/requestValidator/api/auth/SignUpRequestValidator.js');
 
 /**
  * Define route with separate controller
@@ -58,6 +60,11 @@ const sequelize = new Sequelize('database', 'username', 'password', {
  * Sign In Route
  */
 router.post('/signin', signInValidator.validateUser, signInController.signIn);
+
+/**
+ * Sign Up Route
+ */
+router.post('/signup', signUpValidator.validateUser, signUpController.signUp);
 
 
 module.exports = router;

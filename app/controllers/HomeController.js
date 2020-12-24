@@ -1,4 +1,6 @@
-
+// import User model
+const User = require('../models').User
+const Role = require('../models').Role
 
 module.exports = {
 
@@ -7,11 +9,18 @@ module.exports = {
    */
   home(req, res) {
 
-    user = {
-      first_name: 'Abdurozzaq',
-      last_name: 'Nurul Hadi'
-    }
+    User.findOne({ 
+      where: { 
+        email: 'UserOne@example.com' 
+      },
+      include: [
+        {
+          model: Role,
+        },
+      ],
+    }).then(user => { 
+      res.send(user);
+    });
 
-    res.send(user);
   }
 }

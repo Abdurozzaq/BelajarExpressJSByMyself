@@ -22,7 +22,7 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   Role.associate = function(models) {
-    Role.belongsToMany(models.User, { through: 'RoleUser' });
+    Role.belongsToMany(models.User, {as: 'user', through: 'RoleUser' });
   };
 
   return Role;
