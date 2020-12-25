@@ -1,5 +1,8 @@
 // import User model
 const User = require('../../../models').User
+// import bycrypt
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 // The Controller
 module.exports = {
@@ -22,7 +25,7 @@ module.exports = {
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
-            password: req.body.password,
+            password: bcrypt.hashSync(req.body.password, saltRounds),
           }).then((user) => {
             user.addRole(req.body.roleId);
   
