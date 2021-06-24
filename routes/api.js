@@ -67,4 +67,24 @@ router.post('/signin', signInValidator.validateUser, signInController.signIn);
 router.post('/signup', signUpValidator.validateUser, signUpController.signUp);
 
 
+/**
+ * Sign Up Route
+ * 
+ * DESC:
+ * 1. separate controller
+ * 2. separate middleware
+ * 3. multiple controller (first, validator. second, main controller.)
+ * 4. multiple middleware
+ */
+router.route('/signups')
+  .all([
+    logMiddleware.logMiddlewareWorks,
+    logMiddleware.logMiddlewareNotice
+  ])
+  .post([
+    signUpValidator.validateUser, 
+    signUpController.signUp
+  ]);
+
+
 module.exports = router;
